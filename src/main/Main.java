@@ -5,13 +5,15 @@ public class Main {
         double a = 2.7;
         double b = -0.3;
         double c = 4;
-
-        if (x < 1.4) {
+        double EPS = 1E-9;
+        if (x < 1.4 - EPS) {
             return a * x * x + b * x + c;
-        } else if (x == 1.400) {
-            return a / x + Math.sqrt(x * x + 1);
-        } else {
+        } else if (x > 1.400 + EPS) {
             return (a + b * x) / Math.sqrt(x * x + 1);
+
+        } else {
+            return a / x + Math.sqrt(x * x + 1);
+
         }
     }
 
@@ -77,7 +79,7 @@ public class Main {
         double end = 2.0;
         double step = 0.002;
 
-        System.out.println(calculateSteps(start,end,step));
+        System.out.println(calculateSteps(start, end, step));
 
         int[] testIndices = {0, 700, 1000};
 
@@ -100,5 +102,6 @@ public class Main {
 
         System.out.println("Sum of y values: " + sum);
         System.out.println("Average of y values: " + average);
+
     }
 }
